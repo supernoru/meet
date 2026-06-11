@@ -132,6 +132,27 @@ details.guide a{color:var(--acc)}
 .spin{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:sp 1s linear infinite;vertical-align:-2px;margin-right:6px}
 @keyframes sp{to{transform:rotate(360deg)}}
 .notice{font-size:12px;background:#fff8ec;border:1px solid #ffe3b3;color:#9a6b1f;border-radius:10px;padding:9px 12px;margin:8px 0}
+
+/* ---------- PC 와이드 레이아웃 (1024px↑: 2단 대시보드) ---------- */
+@media(min-width:1024px){
+  .wrap{max-width:1320px;padding:0 28px}
+  main.wrap{display:grid;grid-template-columns:minmax(400px,470px) 1fr;gap:0 26px;align-items:start;
+    grid-template-areas:"people results" "filters results" "filters detail" "poll detail" "share detail" "foot foot"}
+  #sec-people{grid-area:people}
+  #sec-filters{grid-area:filters}
+  #sec-results{grid-area:results}
+  #sec-detail{grid-area:detail}
+  #sec-poll{grid-area:poll}
+  #sec-share{grid-area:share}
+  .foot{grid-area:foot}
+  #map{height:420px}
+  #placeList{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+  .presets{grid-template-columns:repeat(4,1fr)}
+}
+@media(min-width:1500px){
+  .wrap{max-width:1500px}
+  #placeList{grid-template-columns:1fr 1fr 1fr}
+}
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 </head>
@@ -191,13 +212,13 @@ details.guide a{color:var(--acc)}
   <button class="btn pri big" id="btnRecommend" style="margin-top:16px">중간 지점 추천받기</button>
 </section>
 
-<section class="card" id="sec-results" style="display:none">
+<section class="card" id="sec-results">
   <h2><span class="n">3</span>추천 약속 지역</h2>
   <p class="hint" id="resultHint"></p>
-  <div id="resultList"></div>
+  <div id="resultList"><div class="empty">참가자와 조건을 입력하고<br>「중간 지점 추천받기」를 눌러주세요</div></div>
 </section>
 
-<section class="card" id="sec-detail" style="display:none">
+<section class="card" id="sec-detail">
   <h2><span class="n">4</span><span id="detailTitle">장소 탐색</span></h2>
   <div id="map">지도를 보려면 ⚙설정에서 카카오 JavaScript 키를 등록하세요</div>
   <div class="ptabs" id="placeTabs">
@@ -259,23 +280,7 @@ details.guide a{color:var(--acc)}
     <div class="desc">등록 시 추천 결과의 소요시간이 실제 대중교통 경로 기준으로 업그레이드됩니다.</div>
     <details class="guide"><summary>발급 방법</summary><ol>
       <li><a href="https://lab.odsay.com" target="_blank">lab.odsay.com</a> 가입 → 「인증센터 &gt; API KEY 발급/관리」</li>
-      <li>Web 플랫폼 선택, 이 페이지의 도메인을 등록 후 키 복사</li>
-    </ol></details>
-  </div>
-  <div class="f-row"><label>TMAP appKey (선택) <span id="tmBadge" class="badge-key">미등록</span></label>
-    <input type="text" id="inTmap" placeholder="SK open API 대중교통 (ODsay 대안)">
-    <details class="guide"><summary>발급 방법</summary><ol>
-      <li><a href="https://openapi.sk.com" target="_blank">openapi.sk.com</a> 가입 → TMAP 대중교통 사용 신청 → 앱 생성 후 appKey 복사</li>
-    </ol></details>
-  </div>
-  <div class="f-row"><label>기본 지도 플랫폼 (장소 링크 연결)</label>
-    <select id="inMapPref"><option value="naver">네이버 지도</option><option value="kakao">카카오맵</option><option value="google">구글맵</option></select>
-  </div>
-  <button class="btn pri big" id="btnSaveSettings">저장</button>
-</div></div>
-
-<div class="toast" id="toast"></div>
-<script>
+      <li>Web 플랫폼 선택, 이 페이지의 <script>
 /* ============================================================
    데이터: 수도권 지하철 노선 (공공데이터 좌표 기반 가공, 주요 구간)
    형식: { color, speed(km/h), loop, st:[[역명, lat, lng], ...] }
