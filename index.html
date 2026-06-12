@@ -150,6 +150,15 @@ details.guide a{color:var(--acc)}
 .reset-f{margin-left:auto;border:none;background:transparent;color:var(--sub);font-size:12px;font-weight:600;cursor:pointer;text-decoration:underline}
 .pbar{display:inline-block;vertical-align:middle;width:54px;height:5px;border-radius:3px;background:var(--chip);overflow:hidden;margin-left:7px}
 .pbar i{display:block;height:100%;background:var(--acc);border-radius:3px}
+.pnum{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;border-radius:7px;background:var(--acc);color:#fff;font-size:11px;font-weight:800;margin-right:8px;flex-shrink:0}
+.pnum.s1{background:#ff7b3d}.pnum.s2{background:#7c5cff}
+.place{cursor:pointer}
+.place.sel{background:var(--acc-soft);border-radius:10px}
+.pmark{display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:var(--acc);color:#fff;font-size:11.5px;font-weight:800;border:2px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.35);cursor:pointer}
+.pmark.s1{background:#ff7b3d}.pmark.s2{background:#7c5cff}
+.pmark.big{transform:scale(1.25)}
+.course-info{background:var(--acc-soft);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:12.5px;font-weight:600;margin-bottom:8px;color:var(--ink)}
+.course-info small{color:var(--sub);font-weight:500;display:block;margin-top:2px}
 
 /* ---------- PC 와이드 레이아웃 (1024px↑: 2단 대시보드) ---------- */
 @media(min-width:1024px){
@@ -1134,6 +1143,7 @@ $("#resultList").addEventListener("click",async e=>{
 let currentArea=null, currentCat="food";
 function openDetail(areaName){
   currentArea=AREAS.find(a=>a.n===areaName);if(!currentArea)return;
+  clearPlaceMap();
   state.selArea=areaName;
   $("#detailTitle").textContent=currentArea.n+" 탐색";
   $("#sec-detail").style.display="";
@@ -1168,7 +1178,7 @@ $("#placeTabs").addEventListener("click",e=>{
   currentCat=b.dataset.cat;
   if(currentArea)loadPlaces(currentCat);
 });
-function placeRowHTML(r,areaN){
+function placeRowHTML(r,areaN,idx,stage){
   const nm=r.place_name, lat=+r.y, lng=+r.x;
   const cat2=(r.category_name||"").split(">").pop().trim();
   const dist=r.distance?(r.distance>=1000?(r.distance/1000).toFixed(1)+"km":r.distance+"m"):"";
@@ -1176,9 +1186,75 @@ function placeRowHTML(r,areaN){
   const links=[["naver","네이버"],["kakao","카카오"],["google","구글"]]
     .sort((a,b)=>(a[0]===pref?-1:0)-(b[0]===pref?-1:0))
     .map(([k,l])=>`<a class="mlink ${k===pref?"nv":""}" target="_blank" rel="noopener" href="${placeLink(k,nm,lat,lng,areaN,r.place_url)}">${l}</a>`).join("");
-  return `<div class="place"><div class="pi"><div class="pn">${esc(nm)}</div><div class="pc">${esc(cat2)}${dist?" · "+dist:""}</div></div>
+  const num=idx!==undefined?`<span class="pnum s${stage||0}">${idx+1}</span>`:"";
+  return `<div class="place" data-pidx="${idx??""}" data-pstage="${stage||0}">${num}<div class="pi"><div class="pn">${esc(nm)}</div><div class="pc">${esc(cat2)}${dist?" · "+dist:""}</div></div>
     <div class="links"><a class="mlink" target="_blank" rel="noopener" href="${naverReviewLink(nm,areaN)}">⭐리뷰</a>${links}</div></div>`;
 }
+
+/* ---------- 지도 위 가게 마커 & 코스 경로 ---------- */
+let placeOverlays=[], courseLine=null, courseInfoOv=null;
+let lastPlaces={0:[],1:[],2:[]}, courseSel={1:0,2:0};
+function clearPlaceMap(){
+  placeOverlays.forEach(o=>o.setMap(null));placeOverlays=[];
+  if(courseLine){courseLine.setMap(null);courseLine=null;}
+  lastPlaces={0:[],1:[],2:[]};
+}
+async function renderPlaceMarkers(groups){ // groups: [{items,stage}]
+  if(!settings.kakao)return;
+  try{await loadKakao();}catch(e){return;}
+  if(!kakaoMap)return;
+  placeOverlays.forEach(o=>o.setMap(null));placeOverlays=[];
+  if(courseLine){courseLine.setMap(null);courseLine=null;}
+  const bounds=new kakao.maps.LatLngBounds();
+  bounds.extend(new kakao.maps.LatLng(currentArea.lat,currentArea.lng));
+  groups.forEach(g=>{
+    lastPlaces[g.stage]=g.items;
+    g.items.forEach((r,i)=>{
+      const pos=new kakao.maps.LatLng(+r.y,+r.x);
+      const el=document.createElement("div");
+      el.className="pmark s"+g.stage;el.textContent=i+1;
+      el.onclick=()=>focusPlace(g.stage,i,true);
+      const ov=new kakao.maps.CustomOverlay({position:pos,content:el,yAnchor:.5,zIndex:5});
+      ov.setMap(kakaoMap);ov._stage=g.stage;ov._idx=i;ov._el=el;
+      placeOverlays.push(ov);
+      bounds.extend(pos);
+    });
+  });
+  if(placeOverlays.length)kakaoMap.setBounds(bounds,30);
+  if(groups.length>1)drawCourseLine();
+}
+function drawCourseLine(){
+  if(!kakaoMap||!lastPlaces[1].length||!lastPlaces[2].length)return;
+  if(courseLine){courseLine.setMap(null);courseLine=null;}
+  const p1=lastPlaces[1][courseSel[1]], p2=lastPlaces[2][courseSel[2]];
+  if(!p1||!p2)return;
+  const a=new kakao.maps.LatLng(+p1.y,+p1.x), b=new kakao.maps.LatLng(+p2.y,+p2.x);
+  courseLine=new kakao.maps.Polyline({path:[a,b],strokeWeight:4,strokeColor:"#7c5cff",strokeOpacity:.85,strokeStyle:"shortdash"});
+  courseLine.setMap(kakaoMap);
+  const km=hav(+p1.y,+p1.x,+p2.y,+p2.x);
+  const walk=Math.max(1,Math.round(km*14));
+  const info=$("#courseInfo");
+  if(info)info.innerHTML=`🍽 1차 <b>${esc(p1.place_name)}</b> → ☕🍻 2차 <b>${esc(p2.place_name)}</b><small>도보 약 ${walk}분 (${km<1?Math.round(km*1000)+"m":km.toFixed(1)+"km"}) · 목록에서 다른 가게를 누르면 코스가 바뀝니다</small>`;
+  // 마커 강조
+  placeOverlays.forEach(o=>{
+    if(o._stage>0)o._el.classList.toggle("big",o._idx===courseSel[o._stage]);
+  });
+}
+function focusPlace(stage,idx,fromMap){
+  const r=lastPlaces[stage][idx];if(!r)return;
+  if(kakaoMap)kakaoMap.panTo(new kakao.maps.LatLng(+r.y,+r.x));
+  $$("#placeList .place").forEach(el=>el.classList.toggle("sel",+el.dataset.pstage===stage&&+el.dataset.pidx===idx));
+  if(stage>0){courseSel[stage]=idx;drawCourseLine();}
+  if(fromMap){
+    const row=$(`#placeList .place[data-pstage="${stage}"][data-pidx="${idx}"]`);
+    if(row&&row.scrollIntoView)row.scrollIntoView({behavior:"smooth",block:"nearest"});
+  }
+}
+$("#placeList").addEventListener("click",e=>{
+  if(e.target.closest("a"))return; // 링크는 그대로 통과
+  const row=e.target.closest(".place");if(!row||row.dataset.pidx==="")return;
+  focusPlace(+row.dataset.pstage,+row.dataset.pidx,false);
+});
 async function loadPlaces(cat){
   const box=$("#placeList");
   const areaN=currentArea.n.replace(/·.*/,"");
@@ -1197,9 +1273,13 @@ async function loadPlaces(cat){
         kakaoSearch(areaN+" "+c1.kw,{lat:currentArea.lat,lng:currentArea.lng,radius:1500,size:5}),
         kakaoSearch(areaN+" "+c2.kw,{lat:currentArea.lat,lng:currentArea.lng,radius:1500,size:5})
       ]);
-      const sec=(title,items)=>`<div class="recent-h" style="padding:10px 2px 2px;font-size:13px;font-weight:700;color:var(--ink)">${title}</div>`+
-        (items.length?items.map(r=>placeRowHTML(r,areaN)).join(""):`<div class="empty">결과 없음</div>`);
-      box.innerHTML=sec("🍽 1차 — "+c1.label,r1)+sec(second==="drink"?"🍻 2차 — 술집":"☕ 2차 — 카페",r2);
+      const sec=(title,items,stage)=>`<div class="recent-h" style="padding:10px 2px 2px;font-size:13px;font-weight:700;color:var(--ink)">${title}</div>`+
+        (items.length?items.map((r,i)=>placeRowHTML(r,areaN,i,stage)).join(""):`<div class="empty">결과 없음</div>`);
+      courseSel={1:0,2:0};
+      box.innerHTML=`<div class="course-info" id="courseInfo" style="grid-column:1/-1">코스를 구성하는 중…</div>`
+        +sec("🍽 1차 — "+c1.label,r1,1)+sec(second==="drink"?"🍻 2차 — 술집":"☕ 2차 — 카페",r2,2);
+      renderPlaceMarkers([{items:r1,stage:1},{items:r2,stage:2}]);
+      if(!settings.kakao||!r1.length||!r2.length){const ci=$("#courseInfo");if(ci)ci.textContent="검색 결과가 부족해 코스를 만들 수 없어요";}
     }catch(e){box.innerHTML=`<div class="empty">검색 실패 — 카카오 키·도메인 설정을 확인하세요</div>`;}
     return;
   }
@@ -1218,8 +1298,9 @@ async function loadPlaces(cat){
       results=results.concat(r);
     }
     const seen=new Set();results=results.filter(r=>!seen.has(r.id)&&seen.add(r.id)).slice(0,12);
-    if(!results.length){box.innerHTML=`<div class="empty">검색 결과가 없어요</div>`;return;}
-    box.innerHTML=results.map(r=>placeRowHTML(r,areaN)).join("");
+    if(!results.length){box.innerHTML=`<div class="empty">검색 결과가 없어요</div>`;clearPlaceMap();return;}
+    box.innerHTML=results.map((r,i)=>placeRowHTML(r,areaN,i,0)).join("");
+    renderPlaceMarkers([{items:results,stage:0}]);
   }catch(e){
     box.innerHTML=`<div class="empty">검색 실패 — 설정에서 카카오 키와 도메인 등록을 확인하세요</div>`;
   }
