@@ -384,51 +384,51 @@ const LINES = {
    ages: 연령대별 적합도
    ============================================================ */
 const AREAS = [
-{n:"강남역",st:["강남","신논현"],lat:37.4995,lng:127.0270,d:"수도권 교통의 중심. 모든 종류의 맛집·술집·모임 장소가 밀집",a:{hot:5,quiet:1,value:3,prem:4,family:2,pet:1,parking:2,late:5,food:5,drink:5,cafe:4,activity:4,culture:3,nature:1,shopping:4,datev:3,biz:5},ages:{20:5,30:5,40:4,50:3}},
-{n:"홍대",st:["홍대입구","합정"],lat:37.5550,lng:126.9237,d:"젊음의 거리. 버스킹·클럽·이색 맛집·소품샵, 늦게까지 활기",a:{hot:5,quiet:1,value:4,prem:2,family:1,pet:2,parking:1,late:5,food:5,drink:5,cafe:5,activity:5,culture:4,nature:1,shopping:4,datev:4,biz:2},ages:{20:5,30:4,40:2,50:1}},
-{n:"성수",st:["성수","뚝섬"],lat:37.5446,lng:127.0559,d:"공장지대를 개조한 카페·팝업의 성지. 서울숲과 연결",a:{hot:5,quiet:2,value:3,prem:4,family:3,pet:4,parking:2,late:3,food:4,drink:4,cafe:5,activity:3,culture:4,nature:3,shopping:4,datev:5,biz:3},ages:{20:5,30:5,40:3,50:2}},
-{n:"연남동",st:["홍대입구"],lat:37.5609,lng:126.9220,d:"경의선숲길(연트럴파크) 따라 아기자기한 맛집·카페 골목",a:{hot:5,quiet:2,value:3,prem:3,family:2,pet:4,parking:1,late:4,food:5,drink:4,cafe:5,activity:2,culture:2,nature:3,shopping:3,datev:5,biz:1},ages:{20:5,30:5,40:3,50:2}},
-{n:"망원",st:["망원","마포구청"],lat:37.5556,lng:126.9020,d:"망원시장과 한강공원. 가성비 맛집과 로컬 감성",a:{hot:4,quiet:3,value:5,prem:1,family:3,pet:3,parking:1,late:3,food:5,drink:3,cafe:4,activity:2,culture:1,nature:4,shopping:2,datev:4,biz:1},ages:{20:4,30:5,40:3,50:2}},
-{n:"잠실",st:["잠실","잠실나루"],lat:37.5133,lng:127.1001,d:"롯데월드·석촌호수·롯데월드몰. 가족·아이 동반 1순위",a:{hot:4,quiet:2,value:3,prem:4,family:5,pet:1,parking:5,late:3,food:4,drink:3,cafe:4,activity:5,culture:4,nature:4,shopping:5,datev:4,biz:3},ages:{20:4,30:4,40:5,50:4}},
-{n:"송리단길",st:["석촌","송파나루"],lat:37.5060,lng:127.1090,d:"석촌호수 옆 트렌디한 맛집·카페 골목",a:{hot:4,quiet:2,value:3,prem:3,family:3,pet:3,parking:2,late:3,food:5,drink:4,cafe:5,activity:2,culture:1,nature:4,shopping:2,datev:5,biz:1},ages:{20:5,30:5,40:3,50:2}},
-{n:"건대입구",st:["건대입구"],lat:37.5404,lng:127.0699,d:"커먼그라운드와 먹자골목. 가성비 좋은 젊은 상권",a:{hot:4,quiet:1,value:5,prem:1,family:1,pet:2,parking:2,late:5,food:5,drink:5,cafe:3,activity:4,culture:2,nature:1,shopping:3,datev:3,biz:2},ages:{20:5,30:4,40:2,50:1}},
-{n:"신촌",st:["신촌"],lat:37.5551,lng:126.9368,d:"대학가 가성비 상권. 모임·회식 공간 다양",a:{hot:3,quiet:1,value:5,prem:1,family:1,pet:1,parking:1,late:5,food:4,drink:5,cafe:3,activity:4,culture:2,nature:1,shopping:2,datev:2,biz:2},ages:{20:5,30:3,40:2,50:1}},
-{n:"이태원",st:["이태원","녹사평"],lat:37.5345,lng:126.9947,d:"세계 각국 음식과 루프탑 바. 이국적 분위기",a:{hot:4,quiet:2,value:2,prem:4,family:1,pet:2,parking:1,late:5,food:5,drink:5,cafe:3,activity:2,culture:3,nature:1,shopping:3,datev:4,biz:3},ages:{20:4,30:5,40:4,50:2}},
-{n:"한남동",st:["한강진","한남"],lat:37.5360,lng:127.0020,d:"갤러리·편집숍·파인다이닝. 세련되고 조용한 어른의 동네",a:{hot:4,quiet:4,value:1,prem:5,family:2,pet:3,parking:2,late:3,food:5,drink:4,cafe:5,activity:1,culture:5,nature:1,shopping:4,datev:5,biz:4},ages:{20:3,30:5,40:5,50:4}},
-{n:"종로·익선동",st:["종로3가","안국"],lat:37.5725,lng:126.9890,d:"한옥 골목 익선동과 광장시장. 레트로 감성과 전통",a:{hot:4,quiet:2,value:4,prem:2,family:2,pet:1,parking:1,late:4,food:5,drink:4,cafe:4,activity:2,culture:5,nature:1,shopping:2,datev:4,biz:3},ages:{20:4,30:4,40:4,50:5}},
-{n:"을지로",st:["을지로3가","을지로입구"],lat:37.5663,lng:126.9925,d:"힙지로. 노포와 숨은 바, 레트로 감성의 성지",a:{hot:5,quiet:2,value:4,prem:2,family:1,pet:1,parking:1,late:5,food:4,drink:5,cafe:4,activity:1,culture:3,nature:1,shopping:1,datev:4,biz:4},ages:{20:5,30:5,40:4,50:3}},
-{n:"광화문·시청",st:["광화문","시청"],lat:37.5710,lng:126.9763,d:"고궁·미술관과 격식 있는 식당. 비즈니스 미팅에 무난",a:{hot:2,quiet:4,value:3,prem:4,family:3,pet:1,parking:3,late:2,food:4,drink:3,cafe:3,activity:1,culture:5,nature:3,shopping:2,datev:3,biz:5},ages:{20:2,30:4,40:5,50:5}},
-{n:"여의도",st:["여의도","여의나루"],lat:37.5215,lng:126.9243,d:"더현대 서울과 한강공원. 쇼핑+피크닉 조합",a:{hot:4,quiet:3,value:2,prem:4,family:4,pet:2,parking:4,late:2,food:4,drink:3,cafe:4,activity:3,culture:3,nature:5,shopping:5,datev:4,biz:5},ages:{20:4,30:4,40:4,50:4}},
-{n:"용리단길",st:["신용산","삼각지"],lat:37.5320,lng:126.9700,d:"용산역 뒤 트렌디 맛집 거리. 아모레퍼시픽·국립중앙박물관 인접",a:{hot:5,quiet:2,value:3,prem:3,family:2,pet:2,parking:3,late:4,food:5,drink:4,cafe:4,activity:2,culture:4,nature:2,shopping:3,datev:4,biz:3},ages:{20:5,30:5,40:3,50:2}},
-{n:"서울숲",st:["서울숲","뚝섬"],lat:37.5435,lng:127.0445,d:"공원 산책과 감성 카페. 유모차·반려견 동반 환영 분위기",a:{hot:4,quiet:4,value:2,prem:3,family:5,pet:5,parking:3,late:2,food:4,drink:2,cafe:5,activity:2,culture:3,nature:5,shopping:2,datev:5,biz:1},ages:{20:4,30:5,40:4,50:3}},
-{n:"왕십리",st:["왕십리"],lat:37.5613,lng:127.0374,d:"5개 노선 환승 허브. 곱창 골목과 대형 쇼핑몰",a:{hot:2,quiet:2,value:4,prem:2,family:3,pet:1,parking:4,late:4,food:4,drink:4,cafe:2,activity:3,culture:1,nature:1,shopping:3,datev:2,biz:3},ages:{20:3,30:4,40:4,50:3}},
-{n:"노원",st:["노원"],lat:37.6552,lng:127.0614,d:"동북권 최대 상권. 문화의거리·먹자골목",a:{hot:2,quiet:2,value:5,prem:1,family:3,pet:1,parking:3,late:4,food:4,drink:4,cafe:3,activity:4,culture:2,nature:2,shopping:3,datev:2,biz:2},ages:{20:4,30:3,40:4,50:4}},
-{n:"영등포 타임스퀘어",st:["영등포","영등포구청"],lat:37.5170,lng:126.9033,d:"대형 복합몰 중심. 실내에서 모든 것 해결, 우천에도 안심",a:{hot:3,quiet:2,value:3,prem:3,family:5,pet:1,parking:5,late:3,food:4,drink:3,cafe:3,activity:4,culture:3,nature:1,shopping:5,datev:3,biz:3},ages:{20:3,30:4,40:5,50:4}},
-{n:"사당",st:["사당","이수"],lat:37.4766,lng:126.9816,d:"강남·관악·과천 접점 환승 요지. 회식 상권 발달",a:{hot:2,quiet:2,value:4,prem:2,family:1,pet:1,parking:2,late:5,food:4,drink:5,cafe:2,activity:3,culture:1,nature:2,shopping:1,datev:1,biz:4},ages:{20:3,30:4,40:5,50:4}},
-{n:"교대·서초",st:["교대"],lat:37.4934,lng:127.0140,d:"조용하고 깔끔한 식당가. 점심·저녁 모임에 무난",a:{hot:2,quiet:4,value:3,prem:3,family:2,pet:1,parking:3,late:3,food:5,drink:4,cafe:3,activity:1,culture:1,nature:1,shopping:1,datev:2,biz:5},ages:{20:2,30:4,40:5,50:5}},
-{n:"압구정·청담",st:["압구정로데오","압구정"],lat:37.5273,lng:127.0407,d:"하이엔드 다이닝·갤러리·명품 거리",a:{hot:4,quiet:3,value:1,prem:5,family:2,pet:3,parking:3,late:4,food:5,drink:5,cafe:5,activity:1,culture:4,nature:1,shopping:5,datev:5,biz:4},ages:{20:3,30:5,40:5,50:4}},
-{n:"가로수길",st:["신사"],lat:37.5210,lng:127.0230,d:"패션·뷰티 플래그십과 브런치 카페",a:{hot:3,quiet:2,value:2,prem:4,family:2,pet:3,parking:2,late:3,food:4,drink:3,cafe:5,activity:1,culture:2,nature:1,shopping:5,datev:4,biz:3},ages:{20:4,30:5,40:3,50:2}},
-{n:"동대문 DDP",st:["동대문역사문화공원","동대문"],lat:37.5665,lng:127.0092,d:"DDP 전시와 심야 쇼핑. 24시간 깨어있는 동네",a:{hot:3,quiet:1,value:4,prem:2,family:2,pet:1,parking:3,late:5,food:4,drink:3,cafe:2,activity:2,culture:4,nature:1,shopping:5,datev:2,biz:2},ages:{20:4,30:3,40:3,50:3}},
-{n:"혜화 대학로",st:["혜화"],lat:37.5822,lng:127.0019,d:"소극장 연극·뮤지컬의 거리. 공연+식사 조합",a:{hot:3,quiet:2,value:4,prem:1,family:2,pet:1,parking:1,late:3,food:4,drink:3,cafe:4,activity:2,culture:5,nature:2,shopping:1,datev:4,biz:1},ages:{20:5,30:4,40:3,50:3}},
-{n:"공덕",st:["공덕"],lat:37.5446,lng:126.9515,d:"5호선·6호선·공항철도·경의중앙 환승. 족발골목과 깔끔한 회식 장소",a:{hot:2,quiet:3,value:4,prem:2,family:2,pet:1,parking:3,late:4,food:4,drink:4,cafe:2,activity:1,culture:1,nature:1,shopping:1,datev:1,biz:4},ages:{20:2,30:4,40:5,50:4}},
-{n:"마곡",st:["마곡나루","마곡"],lat:37.5640,lng:126.8260,d:"서울식물원과 신축 상권. 깔끔하고 한적, 주차 편리",a:{hot:2,quiet:4,value:3,prem:2,family:5,pet:3,parking:4,late:2,food:3,drink:2,cafe:3,activity:2,culture:2,nature:5,shopping:2,datev:3,biz:3},ages:{20:2,30:4,40:4,50:4}},
-{n:"목동",st:["오목교","목동"],lat:37.5250,lng:126.8700,d:"현대백화점·CGV 등 패밀리 상권. 차분한 분위기",a:{hot:2,quiet:3,value:3,prem:3,family:4,pet:1,parking:4,late:2,food:4,drink:3,cafe:3,activity:3,culture:2,nature:2,shopping:4,datev:2,biz:3},ages:{20:2,30:3,40:5,50:4}},
-{n:"천호",st:["천호"],lat:37.5386,lng:127.1238,d:"강동 최대 상권. 현대백화점과 로데오거리",a:{hot:2,quiet:2,value:4,prem:2,family:3,pet:1,parking:3,late:4,food:4,drink:4,cafe:3,activity:3,culture:1,nature:2,shopping:4,datev:2,biz:2},ages:{20:3,30:4,40:4,50:4}},
-{n:"판교",st:["판교"],lat:37.3947,lng:127.1112,d:"현대백화점 판교점과 IT단지 상권. 깔끔한 모임 장소 다수",a:{hot:3,quiet:3,value:2,prem:4,family:4,pet:2,parking:5,late:2,food:4,drink:3,cafe:4,activity:2,culture:2,nature:2,shopping:5,datev:3,biz:5},ages:{20:3,30:5,40:5,50:3}},
-{n:"분당 정자동",st:["정자"],lat:37.3670,lng:127.1083,d:"정자동 카페거리. 분위기 좋은 브런치·디너",a:{hot:3,quiet:4,value:2,prem:4,family:4,pet:3,parking:3,late:2,food:4,drink:3,cafe:5,activity:1,culture:1,nature:3,shopping:2,datev:4,biz:3},ages:{20:3,30:5,40:5,50:4}},
-{n:"분당 서현",st:["서현"],lat:37.3849,lng:127.1235,d:"분당 중심 상권. AK플라자와 먹자골목",a:{hot:2,quiet:2,value:4,prem:2,family:3,pet:1,parking:3,late:3,food:4,drink:4,cafe:3,activity:3,culture:1,nature:1,shopping:3,datev:2,biz:3},ages:{20:4,30:4,40:4,50:4}},
-{n:"일산 라페스타",st:["정발산","마두"],lat:37.6580,lng:126.7700,d:"라페스타·웨스턴돔과 호수공원. 일산의 중심",a:{hot:3,quiet:2,value:4,prem:2,family:4,pet:2,parking:4,late:4,food:4,drink:4,cafe:3,activity:4,culture:2,nature:4,shopping:4,datev:3,biz:2},ages:{20:4,30:4,40:4,50:3}},
-{n:"부천 신중동",st:["신중동","부천시청"],lat:37.5040,lng:126.7700,d:"현대백화점 중동점과 부천 중심 상권",a:{hot:2,quiet:2,value:4,prem:2,family:4,pet:1,parking:4,late:3,food:4,drink:4,cafe:3,activity:3,culture:2,nature:2,shopping:4,datev:2,biz:2},ages:{20:3,30:4,40:4,50:3}},
-{n:"인천 부평",st:["부평","부평구청"],lat:37.4920,lng:126.7235,d:"부평 문화의거리. 인천 동부 최대 상권",a:{hot:2,quiet:1,value:5,prem:1,family:2,pet:1,parking:2,late:4,food:4,drink:4,cafe:3,activity:3,culture:2,nature:1,shopping:3,datev:2,biz:2},ages:{20:4,30:4,40:3,50:3}},
-{n:"송도 센트럴파크",st:["센트럴파크","인천대입구"],lat:37.3927,lng:126.6356,d:"수변공원과 현대프리미엄아울렛. 쾌적한 신도시",a:{hot:3,quiet:4,value:2,prem:4,family:5,pet:3,parking:5,late:2,food:4,drink:3,cafe:4,activity:3,culture:3,nature:5,shopping:4,datev:4,biz:3},ages:{20:3,30:4,40:5,50:4}},
-{n:"수원 행궁동",st:["수원","매교"],lat:37.2810,lng:127.0140,d:"수원화성 성곽길과 행리단길. 한옥 카페·공방 골목",a:{hot:4,quiet:3,value:4,prem:2,family:3,pet:3,parking:2,late:2,food:4,drink:3,cafe:5,activity:2,culture:5,nature:4,shopping:2,datev:5,biz:1},ages:{20:5,30:5,40:4,50:4}},
-{n:"수원 인계동",st:["수원시청"],lat:37.2640,lng:127.0330,d:"수원 최대 유흥·회식 상권",a:{hot:2,quiet:1,value:4,prem:2,family:1,pet:1,parking:3,late:5,food:4,drink:5,cafe:2,activity:3,culture:1,nature:1,shopping:2,datev:1,biz:4},ages:{20:4,30:4,40:4,50:3}},
-{n:"광교",st:["광교중앙","광교"],lat:37.2880,lng:127.0517,d:"갤러리아 광교와 호수공원. 신도시 프리미엄 상권",a:{hot:3,quiet:4,value:2,prem:4,family:5,pet:3,parking:5,late:2,food:4,drink:2,cafe:4,activity:2,culture:3,nature:5,shopping:4,datev:4,biz:2},ages:{20:3,30:4,40:5,50:4}},
-{n:"안양 범계",st:["범계"],lat:37.3897,lng:126.9508,d:"범계 로데오거리. 안양권 최대 먹자 상권",a:{hot:3,quiet:1,value:4,prem:2,family:3,pet:1,parking:3,late:4,food:4,drink:4,cafe:3,activity:3,culture:1,nature:1,shopping:3,datev:2,biz:2},ages:{20:4,30:4,40:4,50:3}},
-{n:"과천",st:["대공원","과천"],lat:37.4359,lng:127.0064,d:"서울대공원·서울랜드·국립현대미술관. 나들이 명소",a:{hot:2,quiet:4,value:4,prem:1,family:5,pet:3,parking:4,late:1,food:2,drink:1,cafe:2,activity:4,culture:5,nature:5,shopping:1,datev:4,biz:1},ages:{20:3,30:4,40:5,50:4}},
-{n:"하남 스타필드",st:["하남시청","미사"],lat:37.5450,lng:127.2240,d:"초대형 복합몰. 쇼핑·식사·키즈 시설 원스톱, 주차 무료",a:{hot:3,quiet:2,value:3,prem:3,family:5,pet:2,parking:5,late:2,food:4,drink:2,cafe:3,activity:4,culture:2,nature:2,shopping:5,datev:3,biz:1},ages:{20:3,30:4,40:5,50:4}},
-{n:"구리",st:["구리"],lat:37.6033,lng:127.1436,d:"구리 돌다리 곱창골목. 동북권·남양주 접점",a:{hot:1,quiet:2,value:5,prem:1,family:2,pet:1,parking:3,late:3,food:4,drink:4,cafe:2,activity:1,culture:1,nature:2,shopping:2,datev:1,biz:2},ages:{20:2,30:3,40:4,50:4}},
-{n:"동탄",st:["동탄"],lat:37.2010,lng:127.0960,d:"동탄 호수공원과 신도시 상권. 경기 남부 거점",a:{hot:2,quiet:3,value:3,prem:3,family:5,pet:2,parking:5,late:2,food:3,drink:3,cafe:4,activity:3,culture:1,nature:4,shopping:3,datev:3,biz:2},ages:{20:3,30:5,40:4,50:2}}
+{n:"강남역",z:"강남",st:["강남","신논현"],lat:37.4995,lng:127.0270,d:"수도권 교통의 중심. 모든 종류의 맛집·술집·모임 장소가 밀집",a:{hot:5,quiet:1,value:3,prem:4,family:2,pet:1,parking:2,late:5,food:5,drink:5,cafe:4,activity:4,culture:3,nature:1,shopping:4,datev:3,biz:5},ages:{20:5,30:5,40:4,50:3}},
+{n:"홍대",z:"마포",st:["홍대입구","합정"],lat:37.5550,lng:126.9237,d:"젊음의 거리. 버스킹·클럽·이색 맛집·소품샵, 늦게까지 활기",a:{hot:5,quiet:1,value:4,prem:2,family:1,pet:2,parking:1,late:5,food:5,drink:5,cafe:5,activity:5,culture:4,nature:1,shopping:4,datev:4,biz:2},ages:{20:5,30:4,40:2,50:1}},
+{n:"성수",z:"성동",st:["성수","뚝섬"],lat:37.5446,lng:127.0559,d:"공장지대를 개조한 카페·팝업의 성지. 서울숲과 연결",a:{hot:5,quiet:2,value:3,prem:4,family:3,pet:4,parking:2,late:3,food:4,drink:4,cafe:5,activity:3,culture:4,nature:3,shopping:4,datev:5,biz:3},ages:{20:5,30:5,40:3,50:2}},
+{n:"연남동",z:"마포",st:["홍대입구"],lat:37.5609,lng:126.9220,d:"경의선숲길(연트럴파크) 따라 아기자기한 맛집·카페 골목",a:{hot:5,quiet:2,value:3,prem:3,family:2,pet:4,parking:1,late:4,food:5,drink:4,cafe:5,activity:2,culture:2,nature:3,shopping:3,datev:5,biz:1},ages:{20:5,30:5,40:3,50:2}},
+{n:"망원",z:"마포",st:["망원","마포구청"],lat:37.5556,lng:126.9020,d:"망원시장과 한강공원. 가성비 맛집과 로컬 감성",a:{hot:4,quiet:3,value:5,prem:1,family:3,pet:3,parking:1,late:3,food:5,drink:3,cafe:4,activity:2,culture:1,nature:4,shopping:2,datev:4,biz:1},ages:{20:4,30:5,40:3,50:2}},
+{n:"잠실",z:"송파",st:["잠실","잠실나루"],lat:37.5133,lng:127.1001,d:"롯데월드·석촌호수·롯데월드몰. 가족·아이 동반 1순위",a:{hot:4,quiet:2,value:3,prem:4,family:5,pet:1,parking:5,late:3,food:4,drink:3,cafe:4,activity:5,culture:4,nature:4,shopping:5,datev:4,biz:3},ages:{20:4,30:4,40:5,50:4}},
+{n:"송리단길",z:"송파",st:["석촌","송파나루"],lat:37.5060,lng:127.1090,d:"석촌호수 옆 트렌디한 맛집·카페 골목",a:{hot:4,quiet:2,value:3,prem:3,family:3,pet:3,parking:2,late:3,food:5,drink:4,cafe:5,activity:2,culture:1,nature:4,shopping:2,datev:5,biz:1},ages:{20:5,30:5,40:3,50:2}},
+{n:"건대입구",z:"성동",st:["건대입구"],lat:37.5404,lng:127.0699,d:"커먼그라운드와 먹자골목. 가성비 좋은 젊은 상권",a:{hot:4,quiet:1,value:5,prem:1,family:1,pet:2,parking:2,late:5,food:5,drink:5,cafe:3,activity:4,culture:2,nature:1,shopping:3,datev:3,biz:2},ages:{20:5,30:4,40:2,50:1}},
+{n:"신촌",z:"마포",st:["신촌"],lat:37.5551,lng:126.9368,d:"대학가 가성비 상권. 모임·회식 공간 다양",a:{hot:3,quiet:1,value:5,prem:1,family:1,pet:1,parking:1,late:5,food:4,drink:5,cafe:3,activity:4,culture:2,nature:1,shopping:2,datev:2,biz:2},ages:{20:5,30:3,40:2,50:1}},
+{n:"이태원",z:"용산",st:["이태원","녹사평"],lat:37.5345,lng:126.9947,d:"세계 각국 음식과 루프탑 바. 이국적 분위기",a:{hot:4,quiet:2,value:2,prem:4,family:1,pet:2,parking:1,late:5,food:5,drink:5,cafe:3,activity:2,culture:3,nature:1,shopping:3,datev:4,biz:3},ages:{20:4,30:5,40:4,50:2}},
+{n:"한남동",z:"용산",st:["한강진","한남"],lat:37.5360,lng:127.0020,d:"갤러리·편집숍·파인다이닝. 세련되고 조용한 어른의 동네",a:{hot:4,quiet:4,value:1,prem:5,family:2,pet:3,parking:2,late:3,food:5,drink:4,cafe:5,activity:1,culture:5,nature:1,shopping:4,datev:5,biz:4},ages:{20:3,30:5,40:5,50:4}},
+{n:"종로·익선동",z:"도심",st:["종로3가","안국"],lat:37.5725,lng:126.9890,d:"한옥 골목 익선동과 광장시장. 레트로 감성과 전통",a:{hot:4,quiet:2,value:4,prem:2,family:2,pet:1,parking:1,late:4,food:5,drink:4,cafe:4,activity:2,culture:5,nature:1,shopping:2,datev:4,biz:3},ages:{20:4,30:4,40:4,50:5}},
+{n:"을지로",z:"도심",st:["을지로3가","을지로입구"],lat:37.5663,lng:126.9925,d:"힙지로. 노포와 숨은 바, 레트로 감성의 성지",a:{hot:5,quiet:2,value:4,prem:2,family:1,pet:1,parking:1,late:5,food:4,drink:5,cafe:4,activity:1,culture:3,nature:1,shopping:1,datev:4,biz:4},ages:{20:5,30:5,40:4,50:3}},
+{n:"광화문·시청",z:"도심",st:["광화문","시청"],lat:37.5710,lng:126.9763,d:"고궁·미술관과 격식 있는 식당. 비즈니스 미팅에 무난",a:{hot:2,quiet:4,value:3,prem:4,family:3,pet:1,parking:3,late:2,food:4,drink:3,cafe:3,activity:1,culture:5,nature:3,shopping:2,datev:3,biz:5},ages:{20:2,30:4,40:5,50:5}},
+{n:"여의도",z:"서남",st:["여의도","여의나루"],lat:37.5215,lng:126.9243,d:"더현대 서울과 한강공원. 쇼핑+피크닉 조합",a:{hot:4,quiet:3,value:2,prem:4,family:4,pet:2,parking:4,late:2,food:4,drink:3,cafe:4,activity:3,culture:3,nature:5,shopping:5,datev:4,biz:5},ages:{20:4,30:4,40:4,50:4}},
+{n:"용리단길",z:"용산",st:["신용산","삼각지"],lat:37.5320,lng:126.9700,d:"용산역 뒤 트렌디 맛집 거리. 아모레퍼시픽·국립중앙박물관 인접",a:{hot:5,quiet:2,value:3,prem:3,family:2,pet:2,parking:3,late:4,food:5,drink:4,cafe:4,activity:2,culture:4,nature:2,shopping:3,datev:4,biz:3},ages:{20:5,30:5,40:3,50:2}},
+{n:"서울숲",z:"성동",st:["서울숲","뚝섬"],lat:37.5435,lng:127.0445,d:"공원 산책과 감성 카페. 유모차·반려견 동반 환영 분위기",a:{hot:4,quiet:4,value:2,prem:3,family:5,pet:5,parking:3,late:2,food:4,drink:2,cafe:5,activity:2,culture:3,nature:5,shopping:2,datev:5,biz:1},ages:{20:4,30:5,40:4,50:3}},
+{n:"왕십리",z:"성동",st:["왕십리"],lat:37.5613,lng:127.0374,d:"5개 노선 환승 허브. 곱창 골목과 대형 쇼핑몰",a:{hot:2,quiet:2,value:4,prem:2,family:3,pet:1,parking:4,late:4,food:4,drink:4,cafe:2,activity:3,culture:1,nature:1,shopping:3,datev:2,biz:3},ages:{20:3,30:4,40:4,50:3}},
+{n:"노원",z:"동북",st:["노원"],lat:37.6552,lng:127.0614,d:"동북권 최대 상권. 문화의거리·먹자골목",a:{hot:2,quiet:2,value:5,prem:1,family:3,pet:1,parking:3,late:4,food:4,drink:4,cafe:3,activity:4,culture:2,nature:2,shopping:3,datev:2,biz:2},ages:{20:4,30:3,40:4,50:4}},
+{n:"영등포 타임스퀘어",z:"서남",st:["영등포","영등포구청"],lat:37.5170,lng:126.9033,d:"대형 복합몰 중심. 실내에서 모든 것 해결, 우천에도 안심",a:{hot:3,quiet:2,value:3,prem:3,family:5,pet:1,parking:5,late:3,food:4,drink:3,cafe:3,activity:4,culture:3,nature:1,shopping:5,datev:3,biz:3},ages:{20:3,30:4,40:5,50:4}},
+{n:"사당",z:"서남",st:["사당","이수"],lat:37.4766,lng:126.9816,d:"강남·관악·과천 접점 환승 요지. 회식 상권 발달",a:{hot:2,quiet:2,value:4,prem:2,family:1,pet:1,parking:2,late:5,food:4,drink:5,cafe:2,activity:3,culture:1,nature:2,shopping:1,datev:1,biz:4},ages:{20:3,30:4,40:5,50:4}},
+{n:"교대·서초",z:"강남",st:["교대"],lat:37.4934,lng:127.0140,d:"조용하고 깔끔한 식당가. 점심·저녁 모임에 무난",a:{hot:2,quiet:4,value:3,prem:3,family:2,pet:1,parking:3,late:3,food:5,drink:4,cafe:3,activity:1,culture:1,nature:1,shopping:1,datev:2,biz:5},ages:{20:2,30:4,40:5,50:5}},
+{n:"압구정·청담",z:"강남",st:["압구정로데오","압구정"],lat:37.5273,lng:127.0407,d:"하이엔드 다이닝·갤러리·명품 거리",a:{hot:4,quiet:3,value:1,prem:5,family:2,pet:3,parking:3,late:4,food:5,drink:5,cafe:5,activity:1,culture:4,nature:1,shopping:5,datev:5,biz:4},ages:{20:3,30:5,40:5,50:4}},
+{n:"가로수길",z:"강남",st:["신사"],lat:37.5210,lng:127.0230,d:"패션·뷰티 플래그십과 브런치 카페",a:{hot:3,quiet:2,value:2,prem:4,family:2,pet:3,parking:2,late:3,food:4,drink:3,cafe:5,activity:1,culture:2,nature:1,shopping:5,datev:4,biz:3},ages:{20:4,30:5,40:3,50:2}},
+{n:"동대문 DDP",z:"도심",st:["동대문역사문화공원","동대문"],lat:37.5665,lng:127.0092,d:"DDP 전시와 심야 쇼핑. 24시간 깨어있는 동네",a:{hot:3,quiet:1,value:4,prem:2,family:2,pet:1,parking:3,late:5,food:4,drink:3,cafe:2,activity:2,culture:4,nature:1,shopping:5,datev:2,biz:2},ages:{20:4,30:3,40:3,50:3}},
+{n:"혜화 대학로",z:"도심",st:["혜화"],lat:37.5822,lng:127.0019,d:"소극장 연극·뮤지컬의 거리. 공연+식사 조합",a:{hot:3,quiet:2,value:4,prem:1,family:2,pet:1,parking:1,late:3,food:4,drink:3,cafe:4,activity:2,culture:5,nature:2,shopping:1,datev:4,biz:1},ages:{20:5,30:4,40:3,50:3}},
+{n:"공덕",z:"마포",st:["공덕"],lat:37.5446,lng:126.9515,d:"5호선·6호선·공항철도·경의중앙 환승. 족발골목과 깔끔한 회식 장소",a:{hot:2,quiet:3,value:4,prem:2,family:2,pet:1,parking:3,late:4,food:4,drink:4,cafe:2,activity:1,culture:1,nature:1,shopping:1,datev:1,biz:4},ages:{20:2,30:4,40:5,50:4}},
+{n:"마곡",z:"강서",st:["마곡나루","마곡"],lat:37.5640,lng:126.8260,d:"서울식물원과 신축 상권. 깔끔하고 한적, 주차 편리",a:{hot:2,quiet:4,value:3,prem:2,family:5,pet:3,parking:4,late:2,food:3,drink:2,cafe:3,activity:2,culture:2,nature:5,shopping:2,datev:3,biz:3},ages:{20:2,30:4,40:4,50:4}},
+{n:"목동",z:"강서",st:["오목교","목동"],lat:37.5250,lng:126.8700,d:"현대백화점·CGV 등 패밀리 상권. 차분한 분위기",a:{hot:2,quiet:3,value:3,prem:3,family:4,pet:1,parking:4,late:2,food:4,drink:3,cafe:3,activity:3,culture:2,nature:2,shopping:4,datev:2,biz:3},ages:{20:2,30:3,40:5,50:4}},
+{n:"천호",z:"송파",st:["천호"],lat:37.5386,lng:127.1238,d:"강동 최대 상권. 현대백화점과 로데오거리",a:{hot:2,quiet:2,value:4,prem:2,family:3,pet:1,parking:3,late:4,food:4,drink:4,cafe:3,activity:3,culture:1,nature:2,shopping:4,datev:2,biz:2},ages:{20:3,30:4,40:4,50:4}},
+{n:"판교",z:"경기남",st:["판교"],lat:37.3947,lng:127.1112,d:"현대백화점 판교점과 IT단지 상권. 깔끔한 모임 장소 다수",a:{hot:3,quiet:3,value:2,prem:4,family:4,pet:2,parking:5,late:2,food:4,drink:3,cafe:4,activity:2,culture:2,nature:2,shopping:5,datev:3,biz:5},ages:{20:3,30:5,40:5,50:3}},
+{n:"분당 정자동",z:"경기남",st:["정자"],lat:37.3670,lng:127.1083,d:"정자동 카페거리. 분위기 좋은 브런치·디너",a:{hot:3,quiet:4,value:2,prem:4,family:4,pet:3,parking:3,late:2,food:4,drink:3,cafe:5,activity:1,culture:1,nature:3,shopping:2,datev:4,biz:3},ages:{20:3,30:5,40:5,50:4}},
+{n:"분당 서현",z:"경기남",st:["서현"],lat:37.3849,lng:127.1235,d:"분당 중심 상권. AK플라자와 먹자골목",a:{hot:2,quiet:2,value:4,prem:2,family:3,pet:1,parking:3,late:3,food:4,drink:4,cafe:3,activity:3,culture:1,nature:1,shopping:3,datev:2,biz:3},ages:{20:4,30:4,40:4,50:4}},
+{n:"일산 라페스타",z:"경기북",st:["정발산","마두"],lat:37.6580,lng:126.7700,d:"라페스타·웨스턴돔과 호수공원. 일산의 중심",a:{hot:3,quiet:2,value:4,prem:2,family:4,pet:2,parking:4,late:4,food:4,drink:4,cafe:3,activity:4,culture:2,nature:4,shopping:4,datev:3,biz:2},ages:{20:4,30:4,40:4,50:3}},
+{n:"부천 신중동",z:"경기서",st:["신중동","부천시청"],lat:37.5040,lng:126.7700,d:"현대백화점 중동점과 부천 중심 상권",a:{hot:2,quiet:2,value:4,prem:2,family:4,pet:1,parking:4,late:3,food:4,drink:4,cafe:3,activity:3,culture:2,nature:2,shopping:4,datev:2,biz:2},ages:{20:3,30:4,40:4,50:3}},
+{n:"인천 부평",z:"경기서",st:["부평","부평구청"],lat:37.4920,lng:126.7235,d:"부평 문화의거리. 인천 동부 최대 상권",a:{hot:2,quiet:1,value:5,prem:1,family:2,pet:1,parking:2,late:4,food:4,drink:4,cafe:3,activity:3,culture:2,nature:1,shopping:3,datev:2,biz:2},ages:{20:4,30:4,40:3,50:3}},
+{n:"송도 센트럴파크",z:"경기서",st:["센트럴파크","인천대입구"],lat:37.3927,lng:126.6356,d:"수변공원과 현대프리미엄아울렛. 쾌적한 신도시",a:{hot:3,quiet:4,value:2,prem:4,family:5,pet:3,parking:5,late:2,food:4,drink:3,cafe:4,activity:3,culture:3,nature:5,shopping:4,datev:4,biz:3},ages:{20:3,30:4,40:5,50:4}},
+{n:"수원 행궁동",z:"경기남",st:["수원","매교"],lat:37.2810,lng:127.0140,d:"수원화성 성곽길과 행리단길. 한옥 카페·공방 골목",a:{hot:4,quiet:3,value:4,prem:2,family:3,pet:3,parking:2,late:2,food:4,drink:3,cafe:5,activity:2,culture:5,nature:4,shopping:2,datev:5,biz:1},ages:{20:5,30:5,40:4,50:4}},
+{n:"수원 인계동",z:"경기남",st:["수원시청"],lat:37.2640,lng:127.0330,d:"수원 최대 유흥·회식 상권",a:{hot:2,quiet:1,value:4,prem:2,family:1,pet:1,parking:3,late:5,food:4,drink:5,cafe:2,activity:3,culture:1,nature:1,shopping:2,datev:1,biz:4},ages:{20:4,30:4,40:4,50:3}},
+{n:"광교",z:"경기남",st:["광교중앙","광교"],lat:37.2880,lng:127.0517,d:"갤러리아 광교와 호수공원. 신도시 프리미엄 상권",a:{hot:3,quiet:4,value:2,prem:4,family:5,pet:3,parking:5,late:2,food:4,drink:2,cafe:4,activity:2,culture:3,nature:5,shopping:4,datev:4,biz:2},ages:{20:3,30:4,40:5,50:4}},
+{n:"안양 범계",z:"경기남",st:["범계"],lat:37.3897,lng:126.9508,d:"범계 로데오거리. 안양권 최대 먹자 상권",a:{hot:3,quiet:1,value:4,prem:2,family:3,pet:1,parking:3,late:4,food:4,drink:4,cafe:3,activity:3,culture:1,nature:1,shopping:3,datev:2,biz:2},ages:{20:4,30:4,40:4,50:3}},
+{n:"과천",z:"경기남",st:["대공원","과천"],lat:37.4359,lng:127.0064,d:"서울대공원·서울랜드·국립현대미술관. 나들이 명소",a:{hot:2,quiet:4,value:4,prem:1,family:5,pet:3,parking:4,late:1,food:2,drink:1,cafe:2,activity:4,culture:5,nature:5,shopping:1,datev:4,biz:1},ages:{20:3,30:4,40:5,50:4}},
+{n:"하남 스타필드",z:"경기동",st:["하남시청","미사"],lat:37.5450,lng:127.2240,d:"초대형 복합몰. 쇼핑·식사·키즈 시설 원스톱, 주차 무료",a:{hot:3,quiet:2,value:3,prem:3,family:5,pet:2,parking:5,late:2,food:4,drink:2,cafe:3,activity:4,culture:2,nature:2,shopping:5,datev:3,biz:1},ages:{20:3,30:4,40:5,50:4}},
+{n:"구리",z:"경기동",st:["구리"],lat:37.6033,lng:127.1436,d:"구리 돌다리 곱창골목. 동북권·남양주 접점",a:{hot:1,quiet:2,value:5,prem:1,family:2,pet:1,parking:3,late:3,food:4,drink:4,cafe:2,activity:1,culture:1,nature:2,shopping:2,datev:1,biz:2},ages:{20:2,30:3,40:4,50:4}},
+{n:"동탄",z:"경기남",st:["동탄"],lat:37.2010,lng:127.0960,d:"동탄 호수공원과 신도시 상권. 경기 남부 거점",a:{hot:2,quiet:3,value:3,prem:3,family:5,pet:2,parking:5,late:2,food:3,drink:3,cafe:4,activity:3,culture:1,nature:4,shopping:3,datev:3,biz:2},ages:{20:3,30:5,40:4,50:2}}
 ];
 
 /* 카테고리별 장소 검색 키워드 */
@@ -570,7 +570,7 @@ const PRESETS = {
 };
 
 function purposeFit(area,purposes){
-  if(!purposes.length)return (area.a.food+area.a.cafe)/10;
+  if(!purposes.length)return 0.7; // 미선택 시 중립 (맛집·카페 스탯 편향 제거)
   const map={food:"food",drink:"drink",cafe:"cafe",activity:"activity",culture:"culture",
     familyMeet:"family",date:"datev",biz:"biz",nature:"nature",shopping:"shopping"};
   let s=0;purposes.forEach(p=>{s+=(area.a[map[p]]||0)/5;});
@@ -653,7 +653,20 @@ function recommend(people,filters,weights,excluded=[]){
     r.score=(score/wsum)*(0.6+0.4*ageS)*moodB*pen;
   });
   cands.sort((a,b)=>b.score-a.score);
-  return cands.slice(0,5).map(r=>{
+  // 시간 게이트: 가장 공평한 후보 대비 최장 소요 +20분 초과 지역은 제외 (속성 점수 역전 방지)
+  const bestMax=Math.min(...cands.map(r=>r.max));
+  let pool=cands.filter(r=>r.max<=bestMax+20);
+  if(pool.length<5)pool=cands;
+  // 권역 다양성: 같은 권역 최대 2곳
+  const picked=[],zoneCnt={};
+  for(const r of pool){
+    const z=r.area.z||"기타";
+    if((zoneCnt[z]||0)>=2)continue;
+    zoneCnt[z]=(zoneCnt[z]||0)+1;picked.push(r);
+    if(picked.length===5)break;
+  }
+  for(const r of pool){if(picked.length>=5)break;if(!picked.includes(r))picked.push(r);}
+  return picked.map(r=>{
     r.routes=people.map((p,i)=>r.anchors&&r.anchors[i]?routeSummary(dists[i],r.anchors[i]):"");
     // 추천 이유 상위 2개
     const w=weights;
